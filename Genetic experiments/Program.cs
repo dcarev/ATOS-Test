@@ -13,7 +13,7 @@ namespace Genetic_experiments
             StringBuilder formatedResult = new StringBuilder();
             char? current;
             int count;
-            Regex regex = new Regex("([a-z]|[A-Z])+");
+            Regex regex = new Regex("[a-z]+");
 
             try
             {
