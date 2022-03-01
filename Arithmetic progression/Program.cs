@@ -11,35 +11,46 @@ namespace Arithmetic_progression
             bool isArrithmeticSequence = true;
             List<int> sequence = new List<int>();
 
-            Console.WriteLine("Please, enter the number of elements and sequence numbers:");
-            if (!int.TryParse(Console.ReadLine(), out n) || (n <= 4))
+            try
             {
-                Console.WriteLine("Number of elements should be an integer number qreater than 4.");
-                return;
-            }
-            for (int i = 0; i < n; i++)
-            {
-                if (!int.TryParse(Console.ReadLine(), out s) || (s <= 0))
+                Console.WriteLine("Please, enter the number of elements and sequence numbers:");
+                if (!int.TryParse(Console.ReadLine(), out n) || (n <= 4))
                 {
-                    Console.WriteLine("Sequence number should be an integer number qreater than 0.");
+                    Console.WriteLine("Number of elements should be an integer number qreater than 4.");
                     return;
                 }
-                sequence.Add(s);
-            }
-
-            difference = sequence[1] - sequence[0];
-            for (int i = 2; i < n; i++)
-            {
-                if ((sequence[i] - sequence[i - 1]) != difference)
+                for (int i = 0; i < n; i++)
                 {
-                    isArrithmeticSequence = false;
+                    if (!int.TryParse(Console.ReadLine(), out s) || (s <= 0))
+                    {
+                        Console.WriteLine("Sequence number should be an integer number qreater than 0.");
+                        return;
+                    }
+                    sequence.Add(s);
                 }
-            }
 
-            Console.WriteLine();
-            Console.WriteLine("Arithmetic progression: " + (isArrithmeticSequence ? "Yes" : "No"));
-            Console.Write("Press any key to stop: ");
-            Console.ReadLine();
+                difference = sequence[1] - sequence[0];
+                for (int i = 2; i < n; i++)
+                {
+                    if ((sequence[i] - sequence[i - 1]) != difference)
+                    {
+                        isArrithmeticSequence = false;
+                    }
+                }
+
+                Console.WriteLine();
+                Console.WriteLine("Arithmetic progression: " + (isArrithmeticSequence ? "Yes" : "No"));
+                Console.WriteLine();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("An error has occured: " + ex.Message);
+            }
+            finally
+            {
+                Console.Write("Press any key to stop: ");
+                Console.ReadLine();
+            }
         }
     }
 }
